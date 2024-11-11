@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafira CV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/Logo_CV.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+</head>
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-s"></i>
+                    <div class="logo-text">Shafira Dwi</div>
+                </div>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlink">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="portofolio.html">Portofolio</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="container">
+                <div class="hero-pic">
+                    <img src="images/Shafira.jpg" alt="Profile Picture">
+                </div>
+                <div class="hero-text">
+                    <h5>Hi I'm <span class="input">Information Systems Student</span></h5>
+                    <h1>Shafira Dwi</h1>
+                    <p>I am a fifth semester student at Stmik Tegal, majoring in Information Systems. Throughout my studies, I have gained strong foundational knowledge in system analysis, database management, and web development. Although I have not participated in student organizations or internships, I have been focusing on building my skills through coursework and personal projects, particularly in software development, data analysis, and information system design. I am eager to further enhance my knowledge and apply my technical skills in real-world projects.</p>
+                    <div class="btn-group">
+                        <a href="cv/Shafira_CV.pdf" class="btn active" id="downloadCV" download>Download CV</a>
+                        <a href="mailto:dwishafira811@gmail.com" class="btn">Contact</a>
+                    </div>
+                    <div class="social">
+                        <a href="https://www.facebook.com/Shafira Dwi" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/shafira-dwi-709925329" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/shafiraadni" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/62895800365674" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="feedback-section">
+        <h2>Ulasan & Saran</h2>
+        <form id="feedbackForm">
+            <label for="username">Nama:</label>
+            <input type="text" id="username" name="username" autocomplete="on" required>
+            
+            <label for="feedback">Ulasan & Saran:</label>
+            <textarea id="feedback" name="feedback" autocomplete="on" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div id="feedbackList">
+            <h3>User Feedback</h3>
+            <!-- Feedback akan muncul di sini -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        /** creating button click show hide navbar **/
+        var togglebtn = document.querySelector(".togglebtn");
+        var nav = document.querySelector(".navlinks");
+        var links = document.querySelector(".navlinks li");
+
+        togglebtn.addEventListener("click", function() {
+            this.classList.toggle("click");
+            nav.classList.toggle("open");
+        });
+
+        var typed = new Typed(".input", {
+            strings: ["Information Systems Student"],
+            typeSpeed: 70,
+            backSpeed: 55,
+            loop: true
+        });
+    </script>
+
+    <!-- Display Feedback on page load -->
+    <script>
+        // Pastikan fungsi displayFeedback sudah didefinisikan
+        function displayFeedback() {
+            console.log("Displaying feedback...");
+            // Tambahkan kode untuk menampilkan feedback di sini
+        }
+    
+        // Menjalankan displayFeedback setelah halaman selesai dimuat
+        window.addEventListener('load', () => {
+            displayFeedback();
+        });
+    </script>
+    
+        <!-- Display Notification on page load -->
+        <script>
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        navigator.serviceWorker.getRegistration().then(reg => {
+                            reg.showNotification("Halo! Selamat Datang di Shafira CV", {
+                                body: "Terima kasih telah mengunjungi situs saya.",
+                                icon: "images/Logo_CV.png"
+                            });
+                        });
+                    }
+                });
+            }
+        </script>
+    
+        <!-- Firebase initialization and other scripts -->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging.js";
+          
+            const firebaseConfig = {
+                apiKey: "AIzaSyBtpvn07blOacc0ejq224rD1hX05NobtfY",
+                authDomain: "portofolio-608b3.firebaseapp.com",
+                projectId: "portofolio-608b3",
+                storageBucket: "portofolio-608b3.firebasestorage.app",
+                messagingSenderId: "170764643590",
+                appId: "1:170764643590:web:1640fc133c822d7e8b8287",
+                measurementId: "G-VBMNS54FQZ"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const messaging = getMessaging(app);
+          
+            navigator.serviceWorker.register("/serviceworker.js").then((registration) => {
+              // Dapatkan token jika izin diberikan oleh pengguna        
+                  getToken(messaging, {
+                    serviceWorkerRegistration: registration,
+                    vapidKey: "BHEW3Uxfo-8BjcAR43juFU_e4JG3LSAwFtTfduJqMuu7muCGVlNza4VO8WHdPF6oHST2MMd5mr5myrbsNoMib-M",
+                  }).then((currentToken) => {
+                    if (currentToken) {
+                      console.log("Token is: " + currentToken);
+                      // Kirim token ke server Anda di sini
+                    } else {
+                      console.log("Tidak ada token yang tersedia.");
+                    }
+                  }).catch((err) => {
+                    console.log("Terjadi kesalahan saat mengambil token: ", err);
+                  });
+              });
+        </script>
+    </body>
+    </html>
+    
